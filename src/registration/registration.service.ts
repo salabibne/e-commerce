@@ -17,14 +17,14 @@ export class RegistrationService {
     async register(data){
       
         try{
-            const hashedPassword = await bcrypt.hash(data.profile.password, 10);
+            const hashedPassword = await bcrypt.hash(data.user.password, 10);
 
         
             // Create Profile
-            const profile = await this.profileModel.create({...data.profile, password: hashedPassword});
+            const profile = await this.profileModel.create({...data.profile});
 
             // Create User and linked to the profile 
-            const user = await this.userModel.create({...data.user, profileId: profile._id});
+            const user = await this.userModel.create({...data.user,password:hashedPassword, profileId: profile._id});
 
             // Create Address and linked to the user
             const address = await this.addressModel.create({...data.addresses, userId: user._id});
