@@ -8,7 +8,6 @@ export class ProfileController {
   @UseGuards(JwtAuthGuard)
   @Get('me')
   getMyProfile(@Req() req) {
-    // req.user is automatically populated by JwtStrategy
     console.log("ProfileController",req.user);
     return req?.user;
   }
