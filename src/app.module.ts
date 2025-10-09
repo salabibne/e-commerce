@@ -11,8 +11,9 @@ import { SubcategoryModule } from './subcategory/subcategory.module';
 import { ProductModule } from './product/product.module';
 import { ProductvariantModule } from './productvariant/productvariant.module';
 import { ProductimageModule } from './productimage/productimage.module';
+import { CatalogModule } from './catalog/catalog.module';
 @Module({
-  imports: [DatabaseModule, RegistrationModule, AuthModule, UserModule, AdminModule, CategoryModule, SubcategoryModule, ProductModule, ProductvariantModule, ProductimageModule],
+  imports: [DatabaseModule, RegistrationModule, AuthModule, UserModule, AdminModule, CategoryModule, SubcategoryModule, ProductModule, ProductvariantModule, ProductimageModule, CatalogModule],
   controllers: [AppController],
   providers: [AppService],
 })
