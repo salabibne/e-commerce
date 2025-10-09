@@ -5,8 +5,12 @@ import { Document, Types } from 'mongoose';
 export class ProductVariant extends Document {
   @Prop({ type: Types.ObjectId, ref: 'Product', required: true })
   productId: Types.ObjectId;
-  @Prop({ required: true })
-  size: number;
+
+  @Prop({ type: String, required: false })
+  size?: string; 
+
+  @Prop({ type: Number, required: false })
+  weight?: number; 
 
   @Prop({ required: true })
   color: string;
@@ -21,4 +25,13 @@ export class ProductVariant extends Document {
   lowStockAlert: number;
 }
 
-export const ProductVariantSchema = SchemaFactory.createForClass(ProductVariant);
+export const ProductVariantSchema =
+  SchemaFactory.createForClass(ProductVariant);
+
+// validation rule:
+ProductVariantSchema.pre('validate', function (next) {
+  if (!this.size && !this.weight) {
+    return next(new Error('Either size or weight must be provided.'));
+  }
+  next();
+});
