@@ -12,8 +12,10 @@ import { ProductModule } from './product/product.module';
 import { ProductvariantModule } from './productvariant/productvariant.module';
 import { ProductimageModule } from './productimage/productimage.module';
 import { CatalogModule } from './catalog/catalog.module';
+import { OrderModule } from './order/order.module';
+
 @Module({
-  imports: [DatabaseModule, RegistrationModule, AuthModule, UserModule, AdminModule, CategoryModule, SubcategoryModule, ProductModule, ProductvariantModule, ProductimageModule, CatalogModule],
+  imports: [DatabaseModule, RegistrationModule, AuthModule, UserModule, AdminModule, CategoryModule, SubcategoryModule, ProductModule, ProductvariantModule, ProductimageModule, CatalogModule, OrderModule],
   controllers: [AppController],
   providers: [AppService],
 })
